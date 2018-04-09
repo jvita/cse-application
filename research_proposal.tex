@@ -48,10 +48,16 @@ Due to the necessary cycle of fitting, testing, and retesting a potential, the p
 In previous work, our group developed a new approach to database optimization that utilizes Bayesian inference \cite{baye} and Markov Chain Monte Carlo methods to iteratively select the optimal subset of a materials database \cite{dbopt}. This method, outlined in Figure \ref{fig:workflow}, effectively reduces the need for human intervention and guesswork associated with the fitting process, potentially condensing years of costly research time into a simple matter of computer walltime. As a proof-of-concept, we used this new algorithm to augment an existing titanium potential to include titanium-oxygen interactions, creating a useful binary potential \cite{tio}. While this previous work demonstrated the value of the algorithm, my work aims to build the tools needed to scale the algorithm up into a more usable state.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.65\linewidth]{workflow.png}
-  \caption{\textit{A general overview of the workflow demonstrated by previous work in our group \cite{dbopt}. Integral to the scalability of this process, and the purpose of the currently proposed work, is to design a massively parallel evaluation engine for rapid evaluation of energies and forces of all structures in the database.}}
-  \label{fig:workflow}
+  % \centering
+  \begin{minipage}[t]{0.65\linewidth}
+    \vskip0pt
+    \includegraphics[width=\textwidth]{workflow.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\linewidth}
+    \caption{\label{fig:workflow}
+      \textit{A general overview of the workflow demonstrated by previous work in our group \cite{dbopt}. Integral to the scalability of this process, and the purpose of the currently proposed work, is to design a massively parallel evaluation engine for rapid evaluation of energies and forces of all structures in the database.}}
+  \end{minipage}
 \end{figure}
 
 At the center of this algorithm, or related algorithms that I could develop in the future, there needs to be a massively parallel evaluation engine that takes a list of structures (atomic positions and chemistries), and a large vector of parameters for the empirical potential, and evaluates the energies and forces of each structure for each parameter set. As more parameters and structures are included into the database, the need for a massively parallel approach becomes readily apparent. For example, if we consider
